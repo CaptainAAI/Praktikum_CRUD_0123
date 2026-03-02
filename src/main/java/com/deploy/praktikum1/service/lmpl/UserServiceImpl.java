@@ -75,4 +75,10 @@ public class UserServiceImpl implements UserService {
         return UserMapper.MAPPER.toUserDtoData(user);
     }
 
+    @Override
+    public void DeleteUser(String id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("user not found"));
+        userRepository.delete(user);
+    }
+
 }
