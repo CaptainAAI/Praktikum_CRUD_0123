@@ -31,3 +31,16 @@ public class UserController {
                 "data", result
         ));
     }
+
+    @GetMapping(
+            path = "/api/users",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Map<String, Object>> getAllUser() {
+        List<UserDto> result = userService.getAllUser();
+
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of(
+                "status", "success",
+                "data", result
+        ));
+    }
