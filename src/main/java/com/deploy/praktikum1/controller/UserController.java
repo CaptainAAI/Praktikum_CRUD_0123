@@ -44,3 +44,16 @@ public class UserController {
                 "data", result
         ));
     }
+
+    @GetMapping(
+            path = "/api/users/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Map<String, Object>> getUserById(@PathVariable("id") String id) {
+        UserDto result = userService.getUserById(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of(
+                "status", "success",
+                "data", result
+        ));
+    }
